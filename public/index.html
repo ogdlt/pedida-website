@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedida Weekend</title>
+  <link rel="stylesheet" href="/styles/main.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="main-nav">
+      <a href="#agenda">Agenda</a>
+      <a href="#map-info">Map and useful information</a>
+      <a href="#about-valencia">About Valencia</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero hero-fullscreen">
+      <div class="hero-image hero-animate">
+        <img src="/images/pedida-map-3x4.png" alt="Illustrated map of Valencia for the pedida weekend" />
+        <div class="hero-gradient"></div>
+
+        <div class="hero-overlay-bottom">
+          <p class="eyebrow">Pedida weekend</p>
+          <h1>Valencia</h1>
+          <p class="hero-date-line">A weekend by the sea</p>
+          <p class="hero-location-line">Map, useful information and a few places close to our hearts</p>
+        </div>
+
+        <a class="scroll-indicator" href="#agenda" aria-label="Scroll to content">
+          <span class="scroll-indicator-label">Scroll</span>
+          <span class="scroll-indicator-arrow"></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="hero-title-block">
+      <p class="hero-title-eyebrow">Welcome</p>
+      <h1>Our Pedida Weekend</h1>
+      <p class="hero-title-subtitle">
+        A small guide to the weekend, a few useful details, and some of the places
+        that mean the most to us in and around Valencia.
+      </p>
+    </section>
+
+    <section id="agenda" class="overview-section">
+      <div class="overview-heading">
+        <p class="section-label">Agenda</p>
+        <h2>The weekend at a glance</h2>
+      </div>
+
+      <table class="weekend-table">
+        <tr>
+          <th>Day</th>
+          <th>Moment</th>
+          <th>Details</th>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>Arrival</td>
+          <td>Arrival to Valencia and check-in. Free time to enjoy the city and the beach.</td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td>Pedida celebration</td>
+          <td>Main gathering and celebration. Full details to be added here once finalized.</td>
+        </tr>
+        <tr>
+          <td>Sunday</td>
+          <td>Relaxed farewell</td>
+          <td>A slower final day to enjoy Valencia before departures.</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="map-info" class="map-story-section">
+      <div class="overview-heading">
+        <p class="section-label">Map and useful information</p>
+        <h2>Where everything happens</h2>
+      </div>
+
+      <div class="map-story-intro">
+        <p>
+          Scroll through the map to discover the places that will shape the weekend,
+          along with a few practical details to help you navigate Valencia.
+        </p>
+      </div>
+
+      <div class="map-story-layout">
+        <div class="map-visual">
+          <div class="map-visual-sticky">
+            <div class="map-frame">
+              <img
+                src="/images/pedida-map-3x4.png"
+                alt="Illustrated map of Valencia with pedida weekend locations"
+                class="map-image"
+              />
+
+              <button class="map-pin pin-1" type="button" data-step="1" aria-label="El Saler and L'Albufera"></button>
+              <button class="map-pin pin-2" type="button" data-step="2" aria-label="City center"></button>
+              <button class="map-pin pin-3" type="button" data-step="3" aria-label="El Cabanyal"></button>
+              <button class="map-pin pin-4" type="button" data-step="4" aria-label="Masía Xamandreu"></button>
+              <button class="map-pin pin-5" type="button" data-step="5" aria-label="Rocafort"></button>
+
+              <article class="map-callout callout-1" data-callout="1">
+                <span class="map-callout-number">1</span>
+                <h3>El Saler &amp; L’Albufera</h3>
+                <p>
+                  Natural reserve that hosts one of the biggest rice fields in Europe,
+                  and where our hotel will be during the weekend.
+                </p>
+              </article>
+
+              <article class="map-callout callout-2" data-callout="2">
+                <span class="map-callout-number">2</span>
+                <h3>City center</h3>
+                <p>
+                  Where Tania developed her career as an executive in PR and now,
+                  naturally, knows better than Olimpia which are the places “to be”.
+                </p>
+              </article>
+
+              <article class="map-callout callout-3" data-callout="3">
+                <span class="map-callout-number">3</span>
+                <h3>El Cabanyal</h3>
+                <p>
+                  Historically a fishermen’s area, this is where the Gascó family used
+                  to spend their family vacation and later on had their residence in
+                  Valencia, and from where Emilio still today often goes out sailing
+                  and fishing.
+                </p>
+              </article>
+
+              <article class="map-callout callout-4" data-callout="4">
+                <span class="map-callout-number">4</span>
+                <h3>Masía Xamandreu</h3>
+                <p>Where we will celebrate the pedida.</p>
+              </article>
+
+              <article class="map-callout callout-5" data-callout="5">
+                <span class="map-callout-number">5</span>
+                <h3>Rocafort</h3>
+                <p>Where Olimpia is from.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-story-steps">
+          <article class="map-step is-active" data-step="1">
+            <p class="map-step-label">Stop 01</p>
+            <h3>El Saler &amp; L’Albufera</h3>
+            <p>
+              Our base for the weekend. This natural reserve is one of the most special
+              landscapes around Valencia: sea, dunes, pine trees and rice fields all in one place.
+            </p>
+            <p class="map-step-note">
+              Useful note: this is where the hotel will be, so most transfers will start or end here.
+            </p>
+          </article>
+
+          <article class="map-step" data-step="2">
+            <p class="map-step-label">Stop 02</p>
+            <h3>City center</h3>
+            <p>
+              The historical heart of Valencia: elegant streets, beautiful architecture
+              and many of the classic spots to stroll, have a drink and enjoy the city.
+            </p>
+            <p class="map-step-note">
+              Useful note: ideal area for a walk, lunch, or a first feel of Valencia if you arrive early.
+            </p>
+          </article>
+
+          <article class="map-step" data-step="3">
+            <p class="map-step-label">Stop 03</p>
+            <h3>El Cabanyal</h3>
+            <p>
+              One of the areas closest to our hearts. It keeps Valencia’s maritime spirit
+              alive and is full of local character, history and sea breeze.
+            </p>
+            <p class="map-step-note">
+              Useful note: a great area for seaside walks, rice dishes and a more local atmosphere.
+            </p>
+          </article>
+
+          <article class="map-step" data-step="4">
+            <p class="map-step-label">Stop 04</p>
+            <h3>Masía Xamandreu</h3>
+            <p>
+              The setting for the celebration itself. A beautiful Valencian estate with
+              exactly the kind of atmosphere we wanted for the pedida.
+            </p>
+            <p class="map-step-note">
+              Useful note: final logistics, timing and transport details can sit here later.
+            </p>
+          </article>
+
+          <article class="map-step" data-step="5">
+            <p class="map-step-label">Stop 05</p>
+            <h3>Rocafort</h3>
+            <p>
+              A place with deep family meaning and part of Olimpia’s story. It adds a very
+              personal layer to the weekend and to this map.
+            </p>
+            <p class="map-step-note">
+              Useful note: you can keep this as a personal family note or expand it later.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about-valencia" class="planning-section">
+      <div class="planning-card">
+        <p class="section-label">About Valencia</p>
+        <h2>A few things to know</h2>
+        <p>
+          Valencia is one of those cities that feels both elegant and relaxed: historic
+          center, sea, wide avenues, good food, and an easy pace. It is particularly
+          special for us because it brings together family history, personal memories,
+          and the Mediterranean setting we love.
+        </p>
+
+        <div class="planning-links">
+          <a href="#">Best rice dishes</a>
+          <a href="#">Where to walk</a>
+          <a href="#">What to pack</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-stripe">
+      <p class="contact-lead">Questions?</p>
+      <p class="contact-details">
+        <span class="contact-item">More details to come soon</span>
+        <span class="contact-divider">—</span>
+        <span class="contact-item">We cannot wait to celebrate with you</span>
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const steps = document.querySelectorAll('.map-step');
+    const callouts = document.querySelectorAll('.map-callout');
+    const pins = document.querySelectorAll('.map-pin');
+
+    function setActiveStep(stepId) {
+      steps.forEach((step) => {
+        step.classList.toggle('is-active', step.dataset.step === stepId);
+      });
+
+      callouts.forEach((callout) => {
+        callout.classList.toggle('is-visible', callout.dataset.callout === stepId);
+      });
+
+      pins.forEach((pin) => {
+        pin.classList.toggle('is-active', pin.dataset.step === stepId);
+      });
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveStep(entry.target.dataset.step);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: '-35% 0px -35% 0px',
+        threshold: 0.2
+      }
+    );
+
+    steps.forEach((step) => observer.observe(step));
+
+    pins.forEach((pin) => {
+      pin.addEventListener('click', () => {
+        const stepId = pin.dataset.step;
+        const targetStep = document.querySelector('.map-step[data-step="' + stepId + '"]');
+        setActiveStep(stepId);
+        targetStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+
+    setActiveStep('1');
+  </script>
+</body>
+</html>
