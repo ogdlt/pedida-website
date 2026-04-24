@@ -125,32 +125,33 @@
       padding: 60px 0 80px;
     }
     .av-scrolly-inner {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: start;
-    }
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 18px;
+  display: grid;
+  grid-template-columns: minmax(620px, 1.35fr) minmax(300px, 0.65fr);
+  gap: 42px;
+  align-items: start;
+}
 
     /* Sticky map column */
     .av-map-col {
-      position: sticky;
-      top: 40px;
-      align-self: start;
-      height: calc(100vh - 80px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .av-map-wrap {
-      position: relative;
-      height: 100%;
-      max-width: 100%;
-      aspect-ratio: 3 / 4;
-      filter: drop-shadow(0 20px 40px rgba(47, 42, 38, 0.18));
-    }
+  position: sticky;
+  top: 24px;
+  align-self: start;
+  height: calc(100vh - 48px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.av-map-wrap {
+  position: relative;
+  width: min(76vw, 920px);
+  height: 100%;
+  aspect-ratio: 3 / 4;
+  filter: drop-shadow(0 20px 40px rgba(47, 42, 38, 0.18));
+}
     .av-map-img {
       width: 100%;
       height: 100%;
@@ -200,11 +201,11 @@
 
     /* Steps column (scrolls past the sticky map) */
     .av-steps-col {
-      display: flex;
-      flex-direction: column;
-      gap: 72vh;        /* roomy spacing so each step gets its own moment */
-      padding: 24vh 0;  /* breathing room above the first and below the last */
-    }
+  display: flex;
+  flex-direction: column;
+  gap: 66vh;
+  padding: 22vh 0;
+}
     .av-step {
       opacity: 0.32;
       transform: translateY(12px);
@@ -215,27 +216,29 @@
       transform: none;
     }
     .av-step-label {
-      display: block;
-      font-size: 12px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin: 0 0 16px;
-    }
-    .av-step-title {
-      margin: 0 0 18px;
-      font-size: clamp(30px, 3.6vw, 44px);
-      font-weight: 400;
-      line-height: 1.1;
-      letter-spacing: -0.01em;
-      color: var(--dark);
-    }
-    .av-step-desc {
-      margin: 0;
-      font-size: 17px;
-      line-height: 1.65;
-      color: var(--mid);
-    }
+  display: block;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.av-step-title {
+  margin: 0 0 14px;
+  font-size: clamp(24px, 2.5vw, 34px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--dark);
+}
+
+.av-step-desc {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--mid);
+}
     .av-step-rule {
       display: block;
       width: 48px;
@@ -361,23 +364,24 @@
               Tweak top/left percentages to line up each pin with the right spot.
               (0%, 0%) = top-left of the image. (100%, 100%) = bottom-right.
             -->
-            <div class="av-callout" data-step="1" style="top: 52%; left: 43%;">
+            <div class="av-callout" data-step="1" style="top: 20%; left: 60%;">
               <span class="av-callout-pin">1</span>
             </div>
-            <div class="av-callout" data-step="2" style="top: 38%; left: 60%;">
+            
+            <div class="av-callout" data-step="2" style="top: 25%; left: 50%;">
               <span class="av-callout-pin">2</span>
             </div>
-            <div class="av-callout" data-step="3" style="top: 22%; left: 46%;">
+            
+            <div class="av-callout" data-step="3" style="top: 52%; left: 43%;">
               <span class="av-callout-pin">3</span>
             </div>
+            
             <div class="av-callout" data-step="4" style="top: 56%; left: 86%;">
               <span class="av-callout-pin">4</span>
             </div>
-            <div class="av-callout" data-step="5" style="top: 88%; left: 52%;">
+            
+            <div class="av-callout" data-step="5" style="top: 78%; left: 52%;">
               <span class="av-callout-pin">5</span>
-            </div>
-            <div class="av-callout" data-step="6" style="top: 15%; left: 60%;">
-              <span class="av-callout-pin">6</span>
             </div>
           </div>
         </div>
@@ -386,70 +390,57 @@
         <div class="av-steps-col">
 
           <article class="av-step" data-step="1">
-            <span class="av-step-label">01 &middot; The Old Town</span>
-            <h2 class="av-step-title">Ciutat Vella</h2>
-            <p class="av-step-desc">
-              The medieval heart of Valencia. We&rsquo;ll wander the narrow streets of
-              El Carmen, stop beneath the Gothic tower of the Cathedral (El Miguelete),
-              and duck into the stunning Mercado Central to sample jamón, oranges and
-              everything in between.
-            </p>
-            <span class="av-step-rule"></span>
-          </article>
-
-          <article class="av-step" data-step="2">
-            <span class="av-step-label">02 &middot; Modern Valencia</span>
-            <h2 class="av-step-title">Ciudad de las Artes y las Ciencias</h2>
-            <p class="av-step-desc">
-              Santiago Calatrava&rsquo;s futuristic complex rising out of the old riverbed.
-              Home to the Hemisfèric IMAX dome and the Oceanogràfic, Europe&rsquo;s largest
-              aquarium &mdash; a striking counterpoint to the medieval city.
-            </p>
-            <span class="av-step-rule"></span>
-          </article>
-
-          <article class="av-step" data-step="3">
-            <span class="av-step-label">03 &middot; The Wedding Venue &middot; A Preview</span>
-            <h2 class="av-step-title">Masía Xamandreu</h2>
-            <p class="av-step-desc">
-              Where we&rsquo;ll be getting married in July 2027. We&rsquo;ll drive out to the
-              countryside estate together so you can picture the big day &mdash; cypresses,
-              golden stone and long Mediterranean evenings.
-            </p>
-            <span class="av-step-rule"></span>
-          </article>
-
-          <article class="av-step" data-step="4">
-            <span class="av-step-label">04 &middot; The Mediterranean</span>
-            <h2 class="av-step-title">Playa de la Malvarrosa</h2>
-            <p class="av-step-desc">
-              Valencia&rsquo;s sandy city beach and promenade. Classic paella restaurants
-              line the boardwalk &mdash; we&rsquo;ll have lunch with our toes almost in
-              the sand at one of the old-school spots.
-            </p>
-            <span class="av-step-rule"></span>
-          </article>
-
-          <article class="av-step" data-step="5">
-            <span class="av-step-label">05 &middot; Rice Country</span>
-            <h2 class="av-step-title">Parque Natural de la Albufera</h2>
-            <p class="av-step-desc">
-              The freshwater lagoon just south of the city, ringed by rice paddies &mdash;
-              the birthplace of paella valenciana. A boat ride at sunset across still
-              water, herons and nothing but sky. Unmissable.
-            </p>
-            <span class="av-step-rule"></span>
-          </article>
-          <article class="av-step" data-step="6">
-            <span class="av-step-label">06 &middot; Home Base</span>
+            <span class="av-step-label">01 &middot; Where Olimpia grew up</span>
             <h2 class="av-step-title">Rocafort</h2>
             <p class="av-step-desc">
-              The quiet town in the huerta just north of Valencia where we&rsquo;ll be
-              based for the weekend. A short drive from the city &mdash; our starting
-              and ending point every day.
+              The town just north of Valencia where Olimpia grew up &mdash; surrounded by
+              orange groves, quiet streets and the landscape of the Valencian huerta.
             </p>
             <span class="av-step-rule"></span>
           </article>
+        
+          <article class="av-step" data-step="2">
+            <span class="av-step-label">02 &middot; Where we will get married</span>
+            <h2 class="av-step-title">Masía Xamandreu</h2>
+            <p class="av-step-desc">
+              Where we will get married! A countryside estate outside Valencia, surrounded
+              by cypresses, golden stone and the Mediterranean light we love so much.
+            </p>
+            <span class="av-step-rule"></span>
+          </article>
+        
+          <article class="av-step" data-step="3">
+            <span class="av-step-label">03 &middot; The heart of Valencia</span>
+            <h2 class="av-step-title">City Center</h2>
+            <p class="av-step-desc">
+              The historic center of Valencia, with its old streets, plazas, churches,
+              markets and terraces. This is the Valencia of wandering, stopping for coffee,
+              and discovering the city slowly.
+            </p>
+            <span class="av-step-rule"></span>
+          </article>
+        
+          <article class="av-step" data-step="4">
+            <span class="av-step-label">04 &middot; By the sea</span>
+            <h2 class="av-step-title">Cabanyal</h2>
+            <p class="av-step-desc">
+              Historically the fishermen's area, today it is an integral part of the city
+              &mdash; colourful, lively and closely tied to Valencia's Mediterranean identity.
+            </p>
+            <span class="av-step-rule"></span>
+          </article>
+        
+          <article class="av-step" data-step="5">
+            <span class="av-step-label">05 &middot; Rice country</span>
+            <h2 class="av-step-title">El Saler &amp; L'Albufera</h2>
+            <p class="av-step-desc">
+              The landscape south of the city, where pine forests, dunes, rice fields and
+              the Albufera lagoon meet. This is the birthplace of paella valenciana and one
+              of the most special corners of Valencia.
+            </p>
+            <span class="av-step-rule"></span>
+          </article>
+        
         </div>
       </div>
     </section>
