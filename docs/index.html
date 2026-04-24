@@ -3,334 +3,487 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pedida Weekend</title>
-  <link rel="stylesheet" href="./styles/main.css" />
+  <title>About Valencia &mdash; Our Pedida Weekend</title>
+  <link rel="stylesheet" href="/styles/main.css" />
+  <style>
+    :root {
+      --dark: #2f2a26;
+      --mid: #5a534d;
+      --muted: #8a7f75;
+      --soft-bg: #f8f8f8;
+      --warm-tan: #eee4d9;
+      --cream: #fdfaf5;
+      --accent: #c9704a;            /* warm terracotta — echoes the orange groves */
+      --border: rgba(47, 42, 38, 0.12);
+      --border-soft: rgba(47, 42, 38, 0.08);
+      --border-strong: rgba(47, 42, 38, 0.2);
+    }
+
+    /* ── overrides so main.css defaults don't fight us ── */
+    main section h2 { text-align: left; }
+    main section { margin: 0; padding: 0; }
+
+    /* ───────── HERO / INTRO ───────── */
+    .av-hero {
+      position: relative;
+      padding: 96px 24px 40px;
+      text-align: center;
+      background: linear-gradient(180deg, #ffffff 0%, #faf6f0 100%);
+      overflow: hidden;
+    }
+    .av-hero::before {
+      content: '';
+      position: absolute;
+      top: -140px; right: -120px;
+      width: 440px; height: 440px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(238, 228, 217, 0.6) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .av-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(238, 228, 217, 0.45) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .av-eyebrow {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 14px;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .av-hero h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 18px;
+      font-size: clamp(38px, 5.4vw, 62px);
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--dark);
+      text-align: center;
+    }
+    .av-hero-subtitle {
+      position: relative;
+      z-index: 1;
+      margin: 0 auto 28px;
+      max-width: 620px;
+      font-size: clamp(17px, 2vw, 20px);
+      font-weight: 400;
+      color: var(--mid);
+      line-height: 1.55;
+      text-align: center;
+    }
+    .av-ornament {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      color: var(--border-strong);
+    }
+    .av-ornament-line { width: 60px; height: 1px; background: currentColor; }
+    .av-ornament svg { width: 14px; height: 14px; fill: currentColor; }
+
+    .av-scroll-cue {
+      position: relative;
+      z-index: 1;
+      margin: 40px auto 0;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .av-scroll-cue::after {
+      content: '';
+      width: 1px;
+      height: 34px;
+      background: var(--border-strong);
+      display: inline-block;
+      margin-left: 6px;
+      animation: cueDrop 2.2s ease-in-out infinite;
+      transform-origin: top;
+    }
+    @keyframes cueDrop {
+      0%, 100% { transform: scaleY(0.3); opacity: 0.3; }
+      50%      { transform: scaleY(1);   opacity: 1; }
+    }
+
+    /* ───────── SCROLLYTELLING ───────── */
+    .av-scrolly {
+      background: var(--soft-bg);
+      padding: 60px 0 80px;
+    }
+    .av-scrolly-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    /* Sticky map column */
+    .av-map-col {
+      position: sticky;
+      top: 40px;
+      align-self: start;
+      height: calc(100vh - 80px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .av-map-wrap {
+      position: relative;
+      height: 100%;
+      max-width: 100%;
+      aspect-ratio: 3 / 4;
+      filter: drop-shadow(0 20px 40px rgba(47, 42, 38, 0.18));
+    }
+    .av-map-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 6px;
+    }
+
+    /* Callouts */
+    .av-callout {
+      position: absolute;
+      transform: translate(-50%, -50%) scale(0.5);
+      opacity: 0;
+      transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.25, 1.4, 0.5, 1);
+      pointer-events: none;
+    }
+    .av-callout.visible {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .av-callout-pin {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 1.5px solid var(--dark);
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      font-size: 17px;
+      letter-spacing: 0.02em;
+      box-shadow: 0 4px 14px rgba(47, 42, 38, 0.25);
+      transition: background 0.35s ease, color 0.35s ease,
+                  transform 0.35s ease, box-shadow 0.35s ease,
+                  border-color 0.35s ease;
+    }
+    .av-callout.active .av-callout-pin {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--cream);
+      transform: scale(1.15);
+      box-shadow: 0 6px 20px rgba(201, 112, 74, 0.4),
+                  0 0 0 6px rgba(201, 112, 74, 0.14);
+    }
+
+    /* Steps column (scrolls past the sticky map) */
+    .av-steps-col {
+      display: flex;
+      flex-direction: column;
+      gap: 72vh;        /* roomy spacing so each step gets its own moment */
+      padding: 24vh 0;  /* breathing room above the first and below the last */
+    }
+    .av-step {
+      opacity: 0.32;
+      transform: translateY(12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .av-step.active {
+      opacity: 1;
+      transform: none;
+    }
+    .av-step-label {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+    .av-step-title {
+      margin: 0 0 18px;
+      font-size: clamp(30px, 3.6vw, 44px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--dark);
+    }
+    .av-step-desc {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--mid);
+    }
+    .av-step-rule {
+      display: block;
+      width: 48px;
+      height: 1px;
+      background: var(--accent);
+      margin: 22px 0 0;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.6s ease 0.1s;
+    }
+    .av-step.active .av-step-rule {
+      transform: scaleX(1);
+    }
+
+    /* ───────── FINAL CTA ───────── */
+    .av-cta {
+      padding: 90px 24px 110px;
+      text-align: center;
+      background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
+    }
+    .av-cta h2 {
+      font-size: clamp(28px, 3.4vw, 40px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--dark);
+      margin: 0 0 18px;
+      text-align: center;
+    }
+    .av-cta p {
+      font-size: 17px;
+      color: var(--mid);
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+    .av-cta-button {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--dark);
+      color: #f7f3ee;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .av-cta-button:hover { background: #1f1a17; }
+
+    /* ───────── RESPONSIVE ───────── */
+    @media (max-width: 900px) {
+      .av-scrolly-inner {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .av-map-col {
+        top: 0;
+        height: 62vh;
+        padding: 12px 0;
+        background: var(--soft-bg);
+        z-index: 2;
+      }
+      .av-steps-col {
+        gap: 56vh;
+        padding: 18vh 0 24vh;
+      }
+      .av-callout-pin {
+        width: 34px;
+        height: 34px;
+        font-size: 14px;
+        border-width: 1.25px;
+      }
+      .av-hero { padding: 72px 20px 32px; }
+    }
+  </style>
 </head>
+
 <body>
   <header class="site-header">
     <nav class="main-nav">
-      <a href="./index.html#agenda">Agenda</a>
-      <a href="./index.html#map-info">Map and useful information</a>
-      <a href="./about-valencia.html">About Valencia</a>
+      <a href="index.html">About Valencia</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="event-details.html">Event Details</a>
+      <a href="travel-stay.html">Travel &amp; Stay</a>
+      <a href="rsvp.html">RSVP</a>
+      <a href="faq.html">FAQ</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero hero-fullscreen">
-      <div class="hero-image hero-animate">
-        <img src="./images/pedida-map-clean-3x4.png" alt="Illustrated map of Valencia for the pedida weekend" />
-        <div class="hero-gradient"></div>
 
-        <div class="hero-overlay-bottom">
-          <p class="eyebrow">Pedida weekend</p>
-          <h1>Valencia</h1>
-          <p class="hero-date-line">A weekend by the sea</p>
-          <p class="hero-location-line">Map, useful information and a few places close to our hearts</p>
-        </div>
-
-        <a class="scroll-indicator" href="#agenda" aria-label="Scroll to content">
-          <span class="scroll-indicator-label">Scroll</span>
-          <span class="scroll-indicator-arrow"></span>
-        </a>
-      </div>
-    </section>
-
-    <section class="hero-title-block">
-      <p class="hero-title-eyebrow">Welcome</p>
-      <h1>Our Pedida Weekend</h1>
-      <p class="hero-title-subtitle">
-        A small guide to the weekend, a few useful details, and some of the places
-        that mean the most to us in and around Valencia.
+    <!-- ───────── HERO / INTRO ───────── -->
+    <section class="av-hero">
+      <p class="av-eyebrow">4 &ndash; 7 June 2026 &middot; La Pedida</p>
+      <h1>About Valencia</h1>
+      <p class="av-hero-subtitle">
+        A little tour of the places that make this city home &mdash; the ones we can&rsquo;t wait
+        to share with you this weekend. Scroll down and discover them one by one on the map.
       </p>
+      <div class="av-ornament">
+        <span class="av-ornament-line"></span>
+        <svg viewBox="0 0 16 16"><path d="M8 1C8 1 5 4.5 5 7C5 8.66 6.34 10 8 10C9.66 10 11 8.66 11 7C11 4.5 8 1 8 1Z"/><line x1="8" y1="10" x2="8" y2="15" stroke="currentColor" stroke-width="1.2"/><line x1="5.5" y1="13" x2="10.5" y2="13" stroke="currentColor" stroke-width="1.2"/></svg>
+        <span class="av-ornament-line"></span>
+      </div>
+      <span class="av-scroll-cue">Scroll to explore</span>
     </section>
 
-    <section id="agenda" class="overview-section">
-      <div class="overview-heading">
-        <p class="section-label">Agenda</p>
-        <h2>The weekend at a glance</h2>
-      </div>
+    <!-- ───────── SCROLLYTELLING MAP ───────── -->
+    <section class="av-scrolly">
+      <div class="av-scrolly-inner">
 
-      <table class="weekend-table">
-        <tr>
-          <th>Day</th>
-          <th>Moment</th>
-          <th>Details</th>
-        </tr>
-        <tr>
-          <td>Friday</td>
-          <td>Arrival</td>
-          <td>Arrival to Valencia and check-in. Free time to enjoy the city and the beach.</td>
-        </tr>
-        <tr>
-          <td>Saturday</td>
-          <td>Pedida celebration</td>
-          <td>Main gathering and celebration. Full details to be added here once finalized.</td>
-        </tr>
-        <tr>
-          <td>Sunday</td>
-          <td>Relaxed farewell</td>
-          <td>A slower final day to enjoy Valencia before departures.</td>
-        </tr>
-      </table>
-    </section>
+        <!-- LEFT: sticky map with numbered callouts -->
+        <div class="av-map-col">
+          <div class="av-map-wrap">
+            <img
+              class="av-map-img"
+              src="/images/pedida-map-clean-3x4.png"
+              alt="Illustrated watercolour map of Valencia"
+            />
 
-    <section id="map-info" class="map-story-section">
-      <div class="overview-heading">
-        <p class="section-label">Map and useful information</p>
-        <h2>Where everything happens</h2>
-      </div>
-
-      <div class="map-story-intro">
-        <p>
-          Scroll through the map to discover the places that will shape the weekend,
-          along with a few practical details to help you navigate Valencia.
-        </p>
-      </div>
-
-      <div class="map-story-layout">
-        <div class="map-visual">
-          <div class="map-visual-sticky">
-            <div class="map-frame">
-              <img
-  src="./images/pedida-map-clean-3x4.png"
-  alt="Illustrated map of Valencia with pedida weekend locations"
-  class="map-image"
-/>
-
-<!-- Pins: keep pin-X classes for positioning, change only data-step order -->
-<button class="map-pin pin-5" type="button" data-step="1" aria-label="Rocafort"></button>
-<button class="map-pin pin-4" type="button" data-step="2" aria-label="Masía Xamandreu"></button>
-<button class="map-pin pin-2" type="button" data-step="3" aria-label="City center"></button>
-<button class="map-pin pin-3" type="button" data-step="4" aria-label="El Cabanyal"></button>
-<button class="map-pin pin-1" type="button" data-step="5" aria-label="El Saler and L'Albufera"></button>
-
-<!-- Callouts: keep callout-X classes for positioning, change only data-callout order -->
-<article class="map-callout callout-5" data-callout="1">
-  <span class="map-callout-number">1</span>
-  <h3>Rocafort</h3>
-  <p>Where Olimpia is from.</p>
-</article>
-
-<article class="map-callout callout-4" data-callout="2">
-  <span class="map-callout-number">2</span>
-  <h3>Masía Xamandreu</h3>
-  <p>Where we will celebrate the pedida.</p>
-</article>
-
-<article class="map-callout callout-2" data-callout="3">
-  <span class="map-callout-number">3</span>
-  <h3>City center</h3>
-  <p>
-    The historical heart of Valencia: elegant streets, beautiful architecture
-    and many of the classic spots to stroll, have a drink and enjoy the city.
-  </p>
-</article>
-
-<article class="map-callout callout-3" data-callout="4">
-  <span class="map-callout-number">4</span>
-  <h3>El Cabanyal</h3>
-  <p>
-    Historically Valencia’s fishermen’s district, full of local character,
-    maritime heritage and sea breeze.
-  </p>
-</article>
-
-<article class="map-callout callout-1" data-callout="5">
-  <span class="map-callout-number">5</span>
-  <h3>El Saler &amp; L’Albufera</h3>
-  <p>
-    Natural reserve that hosts one of the biggest rice fields in Europe,
-    and where our hotel will be during the weekend.
-  </p>
-</article>
+            <!--
+              CALLOUTS — each data-step corresponds to the step on the right.
+              Tweak top/left percentages to line up each pin with the right spot.
+              (0%, 0%) = top-left of the image. (100%, 100%) = bottom-right.
+            -->
+            <div class="av-callout" data-step="1" style="top: 52%; left: 43%;">
+              <span class="av-callout-pin">1</span>
+            </div>
+            <div class="av-callout" data-step="2" style="top: 38%; left: 60%;">
+              <span class="av-callout-pin">2</span>
+            </div>
+            <div class="av-callout" data-step="3" style="top: 22%; left: 46%;">
+              <span class="av-callout-pin">3</span>
+            </div>
+            <div class="av-callout" data-step="4" style="top: 56%; left: 86%;">
+              <span class="av-callout-pin">4</span>
+            </div>
+            <div class="av-callout" data-step="5" style="top: 88%; left: 52%;">
+              <span class="av-callout-pin">5</span>
+            </div>
+          </div>
         </div>
 
-        <div class="map-story-steps">
-          <article class="map-step is-active" data-step="1">
-            <p class="map-step-label">Stop 01</p>
-            <h3>Rocafort</h3>
-            <p>
-              A place with deep family meaning and part of Olimpia’s story.
-              It adds a very personal layer to the weekend and to this map.
+        <!-- RIGHT: scrolling steps, one per place -->
+        <div class="av-steps-col">
+
+          <article class="av-step" data-step="1">
+            <span class="av-step-label">01 &middot; The Old Town</span>
+            <h2 class="av-step-title">Ciutat Vella</h2>
+            <p class="av-step-desc">
+              The medieval heart of Valencia. We&rsquo;ll wander the narrow streets of
+              El Carmen, stop beneath the Gothic tower of the Cathedral (El Miguelete),
+              and duck into the stunning Mercado Central to sample jamón, oranges and
+              everything in between.
             </p>
-            <p class="map-step-note">
-              Useful note: a personal family landmark and part of the story behind the weekend.
-            </p>
+            <span class="av-step-rule"></span>
           </article>
-        
-          <article class="map-step" data-step="2">
-            <p class="map-step-label">Stop 02</p>
-            <h3>Masía Xamandreu</h3>
-            <p>
-              The setting for the celebration itself. A beautiful Valencian estate with
-              exactly the kind of atmosphere we wanted for the pedida.
+
+          <article class="av-step" data-step="2">
+            <span class="av-step-label">02 &middot; Modern Valencia</span>
+            <h2 class="av-step-title">Ciudad de las Artes y las Ciencias</h2>
+            <p class="av-step-desc">
+              Santiago Calatrava&rsquo;s futuristic complex rising out of the old riverbed.
+              Home to the Hemisfèric IMAX dome and the Oceanogràfic, Europe&rsquo;s largest
+              aquarium &mdash; a striking counterpoint to the medieval city.
             </p>
-            <p class="map-step-note">
-              Useful note: final logistics, timing and transport details can sit here later.
-            </p>
+            <span class="av-step-rule"></span>
           </article>
-        
-          <article class="map-step" data-step="3">
-            <p class="map-step-label">Stop 03</p>
-            <h3>City center</h3>
-            <p>
-              The historical heart of Valencia: elegant streets, beautiful architecture
-              and many of the classic spots to stroll, have a drink and enjoy the city.
+
+          <article class="av-step" data-step="3">
+            <span class="av-step-label">03 &middot; The Wedding Venue &middot; A Preview</span>
+            <h2 class="av-step-title">Masía Xamandreu</h2>
+            <p class="av-step-desc">
+              Where we&rsquo;ll be getting married in July 2027. We&rsquo;ll drive out to the
+              countryside estate together so you can picture the big day &mdash; cypresses,
+              golden stone and long Mediterranean evenings.
             </p>
-            <p class="map-step-note">
-              Useful note: ideal area for a walk, lunch, or a first feel of Valencia if you arrive early.
-            </p>
+            <span class="av-step-rule"></span>
           </article>
-        
-          <article class="map-step" data-step="4">
-            <p class="map-step-label">Stop 04</p>
-            <h3>El Cabanyal</h3>
-            <p>
-              One of the areas closest to our hearts. It keeps Valencia’s maritime spirit
-              alive and is full of local character, history and sea breeze.
+
+          <article class="av-step" data-step="4">
+            <span class="av-step-label">04 &middot; The Mediterranean</span>
+            <h2 class="av-step-title">Playa de la Malvarrosa</h2>
+            <p class="av-step-desc">
+              Valencia&rsquo;s sandy city beach and promenade. Classic paella restaurants
+              line the boardwalk &mdash; we&rsquo;ll have lunch with our toes almost in
+              the sand at one of the old-school spots.
             </p>
-            <p class="map-step-note">
-              Useful note: a great area for seaside walks, rice dishes and a more local atmosphere.
-            </p>
+            <span class="av-step-rule"></span>
           </article>
-        
-          <article class="map-step" data-step="5">
-            <p class="map-step-label">Stop 05</p>
-            <h3>El Saler &amp; L’Albufera</h3>
-            <p>
-              Our base for the weekend. This natural reserve is one of the most special
-              landscapes around Valencia: sea, dunes, pine trees and rice fields all in one place.
+
+          <article class="av-step" data-step="5">
+            <span class="av-step-label">05 &middot; Rice Country</span>
+            <h2 class="av-step-title">Parque Natural de la Albufera</h2>
+            <p class="av-step-desc">
+              The freshwater lagoon just south of the city, ringed by rice paddies &mdash;
+              the birthplace of paella valenciana. A boat ride at sunset across still
+              water, herons and nothing but sky. Unmissable.
             </p>
-            <p class="map-step-note">
-              Useful note: this is where the hotel will be, so most transfers will start or end here.
-            </p>
+            <span class="av-step-rule"></span>
           </article>
+
         </div>
       </div>
     </section>
 
-    <section id="about-valencia" class="planning-section">
-      <div class="planning-card">
-        <p class="section-label">About Valencia</p>
-        <h2>The places behind the weekend</h2>
-        <p>
-          Discover the places that shape the celebration — from Masía Xamandreu
-          and El Saler to L’Albufera, Valencia’s historic center and El Cabanyal.
-        </p>
-    
-        <div class="planning-links">
-          <a href="./about-valencia.html">Explore the full guide</a>
-        </div>
-      </div>
+    <!-- ───────── FINAL CTA ───────── -->
+    <section class="av-cta">
+      <h2>See the weekend plan</h2>
+      <p>Here&rsquo;s everything we&rsquo;ve got lined up from Thursday through Sunday.</p>
+      <a href="agenda.html" class="av-cta-button">Open the Agenda</a>
     </section>
 
-    <section class="contact-stripe">
-      <p class="contact-lead">Questions?</p>
-      <p class="contact-details">
-        <span class="contact-item">More details to come soon</span>
-        <span class="contact-divider">—</span>
-        <span class="contact-item">We cannot wait to celebrate with you</span>
-      </p>
-    </section>
   </main>
 
   <script>
-    const steps = document.querySelectorAll('.map-step');
-    const callouts = document.querySelectorAll('.map-callout');
-    const pins = document.querySelectorAll('.map-pin');
+    // Scrollytelling: as each step enters the centre of the viewport,
+    // light up that step and progressively reveal callouts 1 → N.
+    (function () {
+      var steps = document.querySelectorAll('.av-steps-col .av-step');
+      var callouts = document.querySelectorAll('.av-scrolly .av-callout');
 
-    function setActiveStep(stepId) {
-      steps.forEach((step) => {
-        step.classList.toggle('is-active', step.dataset.step === stepId);
-      });
-
-      callouts.forEach((callout) => {
-        callout.classList.toggle('is-visible', callout.dataset.callout === stepId);
-      });
-
-      pins.forEach((pin) => {
-        pin.classList.toggle('is-active', pin.dataset.step === stepId);
-      });
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveStep(entry.target.dataset.step);
-          }
+      function setActive(stepStr) {
+        var n = parseInt(stepStr, 10);
+        callouts.forEach(function (c) {
+          var cn = parseInt(c.dataset.step, 10);
+          c.classList.toggle('visible', cn <= n);
+          c.classList.toggle('active', cn === n);
         });
-      },
-      {
-        root: null,
-        rootMargin: '-35% 0px -35% 0px',
-        threshold: 0.2
+        steps.forEach(function (s) {
+          s.classList.toggle('active', parseInt(s.dataset.step, 10) === n);
+        });
       }
-    );
 
-    steps.forEach((step) => observer.observe(step));
-
-    pins.forEach((pin) => {
-      pin.addEventListener('click', () => {
-        const stepId = pin.dataset.step;
-        const targetStep = document.querySelector('.map-step[data-step="' + stepId + '"]');
-        setActiveStep(stepId);
-        targetStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      });
-    });
-
-    setActiveStep('1');
-  </script>
-  
-    const steps = document.querySelectorAll('.map-step');
-    const callouts = document.querySelectorAll('.map-callout');
-    const pins = document.querySelectorAll('.map-pin');
-  
-    function setActiveStep(stepId) {
-      const currentStep = Number(stepId);
-  
-      steps.forEach((step) => {
-        step.classList.toggle('is-active', Number(step.dataset.step) === currentStep);
-      });
-  
-      callouts.forEach((callout) => {
-        callout.classList.toggle('is-visible', Number(callout.dataset.callout) <= currentStep);
-      });
-  
-      pins.forEach((pin) => {
-        pin.classList.toggle('is-active', Number(pin.dataset.step) <= currentStep);
-      });
-    }
-  
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            setActiveStep(entry.target.dataset.step);
+            setActive(entry.target.dataset.step);
           }
         });
-      },
-      {
-        root: null,
+      }, {
+        // Only fires when a step is in the middle ~20% of the viewport.
         rootMargin: '-40% 0px -40% 0px',
-        threshold: 0.2
-      }
-    );
-  
-    steps.forEach((step) => observer.observe(step));
-  
-    pins.forEach((pin) => {
-      pin.addEventListener('click', () => {
-        const stepId = pin.dataset.step;
-        const targetStep = document.querySelector('.map-step[data-step="' + stepId + '"]');
-        setActiveStep(stepId);
-        if (targetStep) {
-          targetStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        threshold: 0
       });
-    });
-  
-    setActiveStep('1');
+
+      steps.forEach(function (s) { observer.observe(s); });
+    })();
   </script>
 </body>
 </html>
