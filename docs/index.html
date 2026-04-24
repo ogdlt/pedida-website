@@ -121,9 +121,9 @@
 
     /* ───────── SCROLLYTELLING ───────── */
     .av-scrolly {
-      background: var(--soft-bg);
-      padding: 60px 0 80px;
-    }
+  background: var(--soft-bg);
+  padding: 32px 0 80px;
+}
     .av-scrolly-inner {
   max-width: 1500px;
   margin: 0 auto;
@@ -137,17 +137,17 @@
     /* Sticky map column */
     .av-map-col {
   position: sticky;
-  top: 24px;
+  top: 96px;
   align-self: start;
-  height: calc(100vh - 48px);
+  height: calc(100vh - 120px);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
 .av-map-wrap {
   position: relative;
-  width: min(76vw, 920px);
+  width: min(78vw, 880px);
   height: 100%;
   aspect-ratio: 3 / 4;
   filter: drop-shadow(0 20px 40px rgba(47, 42, 38, 0.18));
@@ -294,13 +294,19 @@
         grid-template-columns: 1fr;
         gap: 0;
       }
-      .av-map-col {
-        top: 0;
-        height: 62vh;
-        padding: 12px 0;
-        background: var(--soft-bg);
-        z-index: 2;
-      }
+      ..av-map-col {
+  position: sticky;
+  top: 74px;
+  height: calc(100vh - 86px);
+  padding: 0;
+  background: var(--soft-bg);
+  z-index: 2;
+}
+
+.av-map-wrap {
+  width: min(98vw, 620px);
+  height: 100%;
+}
       .av-steps-col {
         gap: 56vh;
         padding: 18vh 0 24vh;
