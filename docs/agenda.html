@@ -213,6 +213,55 @@
       text-decoration-thickness: 1px;
       text-underline-offset: 3px;
     }
+    /* ───────── DETAILS CARD ───────── */
+.ag-details {
+  background: #ffffff;
+  padding: 0 24px 90px;
+}
+
+.ag-details-card {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 34px 36px 38px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 14px 34px rgba(47, 42, 38, 0.07);
+}
+
+.ag-details-kicker {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ag-details-card h2 {
+  margin: 0 0 14px;
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 400;
+  color: var(--dark);
+  text-align: left;
+}
+
+.ag-details-card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--mid);
+}
+
+@media (max-width: 600px) {
+  .ag-details {
+    padding: 0 20px 76px;
+  }
+
+  .ag-details-card {
+    padding: 28px 24px 32px;
+  }
+}
 
     /* SCROLL REVEAL */
     .r {
@@ -257,70 +306,172 @@
         as we get closer &mdash; check back any time.
       </p>
     </section>
+<!-- ───────── 4-DAY GRID ───────── -->
+<section class="ag-days">
+  <div class="ag-grid">
 
-    <!-- ───────── 4-DAY GRID ───────── -->
-    <section class="ag-days">
-      <div class="ag-grid">
-
-        <!-- THURSDAY -->
-        <div class="ag-day r d1">
-          <div class="ag-day-header">
-            <span class="ag-day-weekday">Thursday</span>
-            <span class="ag-day-date">4 June</span>
-            <span class="ag-day-date-sub">Arrivals</span>
-          </div>
-          <div class="ag-slots">
-            <p class="ag-tbd">Arrivals throughout the day &mdash; plan to be confirmed.</p>
-            <!-- Example slot (kept commented as a template):
-            <div class="ag-slot">
-              <span class="ag-slot-time">19:00</span>
-              <div class="ag-slot-body">
-                <strong>Welcome dinner</strong>
-                <p>At [restaurant] in El Carmen.</p>
-              </div>
-            </div>
-            -->
-          </div>
-        </div>
-
-        <!-- FRIDAY -->
-        <div class="ag-day r d2">
-          <div class="ag-day-header">
-            <span class="ag-day-weekday">Friday</span>
-            <span class="ag-day-date">5 June</span>
-            <span class="ag-day-date-sub">A day in Valencia</span>
-          </div>
-          <div class="ag-slots">
-            <p class="ag-tbd">Plan to be confirmed.</p>
-          </div>
-        </div>
-
-        <!-- SATURDAY -->
-        <div class="ag-day ag-day--main r d3">
-          <div class="ag-day-header">
-            <span class="ag-day-weekday">Saturday</span>
-            <span class="ag-day-date">6 June</span>
-            <span class="ag-day-date-sub">The main day</span>
-          </div>
-          <div class="ag-slots">
-            <p class="ag-tbd">Plan to be confirmed.</p>
-          </div>
-        </div>
-
-        <!-- SUNDAY -->
-        <div class="ag-day r d4">
-          <div class="ag-day-header">
-            <span class="ag-day-weekday">Sunday</span>
-            <span class="ag-day-date">7 June</span>
-            <span class="ag-day-date-sub">Farewell</span>
-          </div>
-          <div class="ag-slots">
-            <p class="ag-tbd">Farewell brunch &mdash; plan to be confirmed.</p>
-          </div>
-        </div>
-
+    <!-- THURSDAY -->
+    <div class="ag-day r d1">
+      <div class="ag-day-header">
+        <span class="ag-day-weekday">Thursday</span>
+        <span class="ag-day-date">4 June</span>
+        <span class="ag-day-date-sub">Arrival in Valencia</span>
       </div>
-    </section>
+
+      <div class="ag-slots">
+        <div class="ag-slot">
+          <span class="ag-slot-time">XX:XX</span>
+          <div class="ag-slot-body">
+            <strong>Arrival in Valencia</strong>
+            <p>Arrival by Fariba, Floria, Leila and Shariar in Valencia, followed by check-in at the Airbnb in El Cabanyal. See Airbnb details below.</p>
+          </div>
+        </div>
+
+        <div class="ag-slot">
+          <span class="ag-slot-time">XX:XX</span>
+          <div class="ag-slot-body">
+            <strong>Afternoon by the sea</strong>
+            <p>A relaxed stroll around the beach side of Valencia, including La Malvarrosa beach.</p>
+          </div>
+        </div>
+
+        <div class="ag-slot">
+          <span class="ag-slot-time">Evening</span>
+          <div class="ag-slot-body">
+            <strong>Dinner in the city</strong>
+            <p>Dinner plans in Valencia city centre.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRIDAY -->
+    <div class="ag-day r d2">
+      <div class="ag-day-header">
+        <span class="ag-day-weekday">Friday</span>
+        <span class="ag-day-date">5 June</span>
+        <span class="ag-day-date-sub">City tour</span>
+      </div>
+
+      <div class="ag-slots">
+        <div class="ag-slot">
+          <span class="ag-slot-time">10:00</span>
+          <div class="ag-slot-body">
+            <strong>Valencia city tour</strong>
+            <p>The day will start with a city tour led by Emilio, a long-time Cabanyal sailor. He will meet you at the apartment before taking you through the historic city area.</p>
+          </div>
+        </div>
+
+        <div class="ag-slot">
+          <span class="ag-slot-time">Lunch</span>
+          <div class="ag-slot-body">
+            <strong>Local lunch spots</strong>
+            <p>Lunch will be at local favourite places selected with Emilio’s guidance.</p>
+          </div>
+        </div>
+
+        <div class="ag-slot">
+          <span class="ag-slot-time">Evening</span>
+          <div class="ag-slot-body">
+            <strong>Dinner plans</strong>
+            <p>Dinner is still open and will be decided closer to the date.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SATURDAY -->
+    <div class="ag-day ag-day--main r d3">
+      <div class="ag-day-header">
+        <span class="ag-day-weekday">Saturday</span>
+        <span class="ag-day-date">6 June</span>
+        <span class="ag-day-date-sub">Masía & Pedida cocktail</span>
+      </div>
+
+      <div class="ag-slots">
+        <div class="ag-slot">
+          <span class="ag-slot-time">10:30</span>
+          <div class="ag-slot-body">
+            <strong>Visit to Masía Xamandreu</strong>
+            <p>A visit to the venue where Shay and Oli will get married. You will see the gardens where the ceremony and celebration will take place.</p>
+          </div>
+        </div>
+
+        <div class="ag-slot">
+          <span class="ag-slot-time">13:00</span>
+          <div class="ag-slot-body">
+            <strong>Back to the apartment</strong>
+            <p>Return to the apartment to relax before the evening celebration.</p>
+          </div>
+        </div>
+
+        <div class="ag-slot">
+          <span class="ag-slot-time">17:00</span>
+          <div class="ag-slot-body">
+            <strong>Pedida cocktail evening</strong>
+            <p>The Pedida cocktail evening will take place at Olimpia’s house from 17:00 to 23:00.</p>
+          </div>
+        </div>
+
+        <div class="ag-slot">
+          <span class="ag-slot-time">Dress</span>
+          <div class="ag-slot-body">
+            <strong>Dress code</strong>
+            <p>Men are invited to wear a shirt and trousers, no tie. Ladies are invited to wear cocktail evening attire.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUNDAY -->
+    <div class="ag-day r d4">
+      <div class="ag-day-header">
+        <span class="ag-day-weekday">Sunday</span>
+        <span class="ag-day-date">7 June</span>
+        <span class="ag-day-date-sub">El Saler & paella</span>
+      </div>
+
+      <div class="ag-slots">
+        <div class="ag-slot">
+          <span class="ag-slot-time">11:00</span>
+          <div class="ag-slot-body">
+            <strong>Airbnb check-out</strong>
+            <p>Check-out from the Airbnb and drive towards El Saler.</p>
+          </div>
+        </div>
+
+        <div class="ag-slot">
+          <span class="ag-slot-time">12:00</span>
+          <div class="ag-slot-body">
+            <strong>Visit to Parador El Saler</strong>
+            <p>Meet at Parador El Saler to visit the hotel where guests will stay during the wedding weekend.</p>
+          </div>
+        </div>
+
+        <div class="ag-slot">
+          <span class="ag-slot-time">14:00</span>
+          <div class="ag-slot-body">
+            <strong>Paella lunch</strong>
+            <p>Paella at one of the local restaurants in the area.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ───────── AIRBNB DETAILS ───────── -->
+<section class="ag-details">
+  <div class="ag-details-card r">
+    <span class="ag-details-kicker">Stay details</span>
+    <h2>Airbnb details</h2>
+    <p>
+      The Airbnb owner is Sergio Vazquez (+34 692 103 387). Keys will be picked up
+      in a nearby area, and exact directions for key pick-up will be shared 24 hours
+      before check-in. Shay and Oli will arrange this directly with the owner.
+    </p>
+  </div>
+</section>
 
     <!-- ───────── FOOTER NOTE ───────── -->
     <section class="ag-note">
