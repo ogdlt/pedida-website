@@ -290,36 +290,132 @@
 
     /* ───────── RESPONSIVE ───────── */
     @media (max-width: 900px) {
-      .av-scrolly-inner {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-      ..av-map-col {
-  position: sticky;
-  top: 74px;
-  height: calc(100vh - 86px);
-  padding: 0;
-  background: var(--soft-bg);
-  z-index: 2;
-}
+  .av-hero {
+    padding: 64px 20px 34px;
+  }
 
-.av-map-wrap {
-  width: min(98vw, 620px);
-  height: 100%;
+  .av-hero h1 {
+    font-size: clamp(38px, 12vw, 54px);
+  }
+
+  .av-hero-subtitle {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .av-scroll-cue {
+    margin-top: 30px;
+  }
+
+  .av-scrolly {
+    padding: 0 0 70px;
+    background: var(--soft-bg);
+  }
+
+  .av-scrolly-inner {
+    display: block;
+    max-width: none;
+    padding: 0;
+  }
+
+  /* Mobile: big sticky map */
+  .av-map-col {
+    position: sticky;
+    top: 64px;
+    z-index: 2;
+    height: calc(62svh - 64px);
+    min-height: 390px;
+    max-height: 560px;
+    padding: 10px 8px 0;
+    background: var(--soft-bg);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .av-map-wrap {
+    width: min(100vw, 560px);
+    height: 100%;
+    aspect-ratio: auto;
+    filter: drop-shadow(0 14px 24px rgba(47, 42, 38, 0.14));
+  }
+
+  .av-map-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: top center;
+    border-radius: 4px;
+  }
+
+  /* Mobile pins */
+  .av-callout-pin {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+    border-width: 1.2px;
+    box-shadow: 0 3px 10px rgba(47, 42, 38, 0.2);
+  }
+
+  .av-callout.active .av-callout-pin {
+    transform: scale(1.1);
+    box-shadow:
+      0 5px 16px rgba(201, 112, 74, 0.35),
+      0 0 0 5px rgba(201, 112, 74, 0.12);
+  }
+
+  /* Mobile story cards */
+  .av-steps-col {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 42vh;
+    padding: 14vh 20px 22vh;
+  }
+
+  .av-step {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 24px 22px 26px;
+    background: rgba(253, 250, 245, 0.94);
+    border: 1px solid var(--border-soft);
+    box-shadow: 0 14px 34px rgba(47, 42, 38, 0.12);
+    opacity: 0.5;
+    transform: translateY(10px);
+    backdrop-filter: blur(6px);
+  }
+
+  .av-step.active {
+    opacity: 1;
+    transform: none;
+  }
+
+  .av-step-label {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+
+  .av-step-title {
+    font-size: 28px;
+    line-height: 1.05;
+  }
+
+  .av-step-desc {
+    font-size: 15.5px;
+    line-height: 1.6;
+  }
+
+  .av-step-rule {
+    margin-top: 18px;
+  }
+
+  .av-cta {
+    padding: 70px 22px 90px;
+  }
 }
-      .av-steps-col {
-        gap: 56vh;
-        padding: 18vh 0 24vh;
-      }
-      .av-callout-pin {
-        width: 34px;
-        height: 34px;
-        font-size: 14px;
-        border-width: 1.25px;
-      }
-      .av-hero { padding: 72px 20px 32px; }
-    }
-  </style>
+</style>
 </head>
 
 <body>
@@ -331,7 +427,6 @@
   </header>
 
   <main>
-
     <!-- ───────── HERO / INTRO ───────── -->
     <section class="av-hero">
       <p class="av-eyebrow">4 &ndash; 7 June 2026 &middot; La Pedida</p>
@@ -475,17 +570,18 @@
         });
       }
 
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            setActive(entry.target.dataset.step);
-          }
-        });
-      }, {
-        // Only fires when a step is in the middle ~20% of the viewport.
-        rootMargin: '-40% 0px -40% 0px',
-        threshold: 0
-      });
+      var isMobile = window.matchMedia('(max-width: 900px)').matches;
+
+var observer = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      setActive(entry.target.dataset.step);
+    }
+  });
+}, {
+  rootMargin: isMobile ? '-35% 0px -45% 0px' : '-40% 0px -40% 0px',
+  threshold: 0
+});
 
       steps.forEach(function (s) { observer.observe(s); });
     })();
